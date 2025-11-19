@@ -257,3 +257,4 @@ async function game() {
   // If the game ends without process.exit (e.g., logic tweak), close readline safely
   rl.close();
 })();
+
