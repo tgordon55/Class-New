@@ -1,157 +1,97 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Demise Dungeon</title>
-</head>
-<body style="background:black; color:white; font-family:monospace; padding:20px;">
-<script>
-function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-function randomChoice(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-async function ask(q) { return (prompt(q) || "").trim(); }
+const gameText = document.getElementById('game-text');
+const userInput = document.getElementById('user-input');
+const submitBtn = document.getElementById('submit-btn');
 
+function print(text) {
+    gameText.innerText += text + "\n";
+    gameText.scrollTop = gameText.scrollHeight; // auto-scroll
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Game variables
 let playerName = "";
+let currentStep = "greet";
 
-async function ending(status) {
-  let msg = "";
-  msg += "--------------------------------------------------\n";
-  if (status === "win") {
-    msg += "*** CONGRATULATIONS! YOU'VE WON! ***\n";
-    msg += "Your bravery has paid off!\n";
-  } else {
-    msg += "*** G A M E   O V E R ***\n";
-    msg += "The dungeon proved too challenging.\n";
-  }
-  msg += "--------------------------------------------------";
-  alert(msg);
-}
+// Main game loop
+submitBtn.addEventListener('click', async () => {
+    const input = userInput.value.trim();
+    userInput.value = "";
 
-async function home() {
-  alert("You safely arrive home. You survived!");
-
-  while (true) {
-    let choice = await ask(
-      "You feel like there's more to do...\n" +
-      "1: Go home (Win)\n" +
-      "2: Enter the dungeon again\n"
-    );
-
-    if (choice === "1") {
-      await ending("win");
-      return "finished";
-    } 
-    if (choice === "2") {
-      return "restart";
+    if (currentStep === "greet") {
+        print(`Nice to meet you, ${input}!`);
+        playerName = input;
+        await sleep(500);
+        currentStep = "choosePath";
+        print(`\n${playerName}, your adventure begins now!`);
+        await sleep(500);
+        print("\nYou find yourself at a crossroads. Where will you go?");
+        print("1. Enter the dark forest.");
+        print("2. Walk along the beach.");
+    } else if (currentStep === "choosePath") {
+        if (input === "1") {
+            currentStep = "forest";
+            print("\nYou enter the dark forest. It's spooky and quiet...");
+            await sleep(1000);
+            print("Suddenly, you hear a noise behind you!");
+            await sleep(1000);
+            print("Do you want to run or stay and see what it is?");
+        } else if (input === "2") {
+            currentStep = "beach";
+            print("\nYou walk along the beach. The waves are calming...");
+            await sleep(1000);
+            print("You see a shiny object in the sand. Do you want to pick it up? (yes/no)");
+        } else {
+            print("That's not a valid option! Please enter 1 or 2.");
+        }
+    } else if (currentStep === "forest") {
+        if (input.toLowerCase() === "run") {
+            const outcomes = [
+                "You trip over a root but manage to get up and run away.",
+                "You run as fast as you can and escape safely.",
+                "You run as fast as you can, but you don’t see the giant hole, and you fall in."
+            ];
+            const outcome = outcomes[Math.floor(Math.random() * outcomes.length)];
+            print(outcome);
+            if (outcome.includes("fall in")) {
+                print("You are unharmed from the fall. You yell for help, but no one comes.");
+            } else {
+                print("You make your way back home and have a cup of tea.");
+            }
+            currentStep = "end";
+        } else if (input.toLowerCase() === "stay") {
+            const encounters = [
+                "A friendly rabbit appears! It guides you out safely.",
+                "A shadowy figure appears... but it turns out to be just a deer."
+            ];
+            print(encounters[Math.floor(Math.random() * encounters.length)]);
+            currentStep = "end";
+        } else {
+            print("Invalid action, nothing happens. You walk back safely.");
+            currentStep = "end";
+        }
+    } else if (currentStep === "beach") {
+        if (input.toLowerCase() === "yes") {
+            const treasures = [
+                "You pick up the shiny object and discover it's a golden coin!",
+                "It's a piece of glass, but it's smooth and pretty."
+            ];
+            print(treasures[Math.floor(Math.random() * treasures.length)]);
+            currentStep = "end";
+        } else if (input.toLowerCase() === "no") {
+            print("You walk past the object, but feel relaxed by the sound of the waves.");
+            currentStep = "end";
+        } else {
+            print("You hesitate, but nothing happens. You continue walking.");
+            currentStep = "end";
+        }
+    } else if (currentStep === "end") {
+        print("\nThe adventure has ended! Refresh the page to play again.");
     }
-    alert("Invalid option.");
-  }
-}
+});
 
-async function left_path() {
-  alert("You take the left path. The ground starts to quake!");
-
-  const action = (await ask("Turn back or continue? (back/continue):")).toLowerCase();
-
-  if (action === "back") {
-    alert("Debris blocks the way back. You follow the light and find riches!");
-    await ending("win");
-    return "finished";
-  }
-
-  if (action === "continue") {
-    const outcome = randomChoice([
-      "You trip, the ground collapses, and you fall to your death.",
-      "You get pulled deeper into the dungeon, forever trapped."
-    ]);
-
-    alert(outcome);
-
-    if (outcome.includes("death")) {
-      await ending("lose");
-      return "finished";
-    }
-
-    const encounter = randomChoice([
-      "A medusa-like beast appears! Instant death.",
-      "You fall into a massive hole. You died, brah!"
-    ]);
-
-    alert(encounter);
-    await ending("lose");
-    return "finished";
-  }
-
-  alert("Invalid choice. Nothing happens. You wake up at home.");
-  return await home();
-}
-
-async function straight_path() {
-  alert("You enter a cavern. In the center you see a strange red stick.");
-
-  while (true) {
-    const action = (await ask("Pick up the stick? (pick/no):")).toLowerCase();
-
-    if (action === "pick") {
-      const discovery = randomChoice([
-        "It's stuck. You pull it—awaken a Wyvern! DEAD!",
-        "It's just a stick. You leave the dungeon alive!"
-      ]);
-
-      alert(discovery);
-
-      if (discovery.includes("DEAD")) {
-        await ending("lose");
-        return "finished";
-      }
-
-      return await home();
-    }
-
-    if (action === "no") {
-      alert("You ignore the stick and leave safely!");
-      return await home();
-    }
-
-    alert("Invalid option.");
-  }
-}
-
-async function start_adventure() {
-  alert("You enter a portal leading to a mysterious dungeon...");
-
-  while (true) {
-    let choice = await ask("Choose a path:\n1: Left (light)\n2: Straight (darkness)");
-
-    if (choice === "1") return await left_path();
-    if (choice === "2") return await straight_path();
-
-    alert("Invalid option.");
-  }
-}
-
-async function greet() {
-  alert("Welcome to DEMISE DUNGEON");
-  playerName = await ask("What is your name?");
-  alert("Welcome, " + playerName + ". Your demise begins now...");
-}
-
-async function game() {
-  await greet();
-  return await start_adventure();
-}
-
-async function main() {
-  while (true) {
-    await game();
-    let again = (await ask("Play again? (Y/N):")).toUpperCase();
-    if (again !== "Y") {
-      alert("Thanks for playing!");
-      break;
-    }
-  }
-}
-
-main();
-</script>
-</body>
-</html>
+// Initial greeting
+print("Hello, adventurer! Welcome to the land of JavaScript.");
+print("What is your name?");
