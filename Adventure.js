@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Denise Dungeon</title>
+  <title>Demise Dungeon</title>
 </head>
 <body style="background:black; color:white; font-family:monospace; padding:20px;">
 <script>
@@ -130,7 +130,7 @@ async function start_adventure() {
 }
 
 async function greet() {
-  alert("Welcome to DENISE DUNGEON");
+  alert("Welcome to DEMISE DUNGEON");
   playerName = await ask("What is your name?");
   alert("Welcome, " + playerName + ". Your demise begins now...");
 }
