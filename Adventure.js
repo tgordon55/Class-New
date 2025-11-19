@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html>
-<head>
+
   <meta charset="UTF-8">
   <title>Demise Dungeon</title>
 </head>
 <body style="background:black; color:white; font-family:monospace; padding:20px;">
-<script>
+
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 function randomChoice(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 async function ask(q) { return (prompt(q) || "").trim(); }
@@ -152,6 +151,4 @@ async function main() {
 }
 
 main();
-</script>
-</body>
-</html>
+
