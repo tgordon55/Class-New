@@ -2,41 +2,45 @@
 <html>
 <head>
   <style>
-    body {
-    /* base text + layout */
+   body {
+    /* Base text + layout */
     font-family: sans-serif;
-    color: #F5F5F5;            /* light text for black */
+    color: #F5F5F5;
     text-align: center;
 
-    /* base black */
+    /* Deep black base */
     background-color: #050505;
 
-    /*  gold sparkle dust (TOP layers) */
+    /*  Gold sparkle dust (stronger) */
     background-image:
-        radial-gradient(circle, rgba(212, 167, 66, 0.40) 1.8px, transparent 1.8px),
-        radial-gradient(circle, rgba(212, 167, 66, 0.28) 1.4px, transparent 1.4px),
-        radial-gradient(circle, rgba(212, 167, 66, 0.22) 1.1px, transparent 1.1px),
+        radial-gradient(circle, rgba(212, 167, 66, 0.50) 2.2px, transparent 2.2px),
+        radial-gradient(circle, rgba(212, 167, 66, 0.50) 1.8px, transparent 1.8px),
+        radial-gradient(circle, rgba(212, 167, 66, 0.50) 1.4px, transparent 1.4px),
 
-        /*  carbon-fiber texture (BOTTOM layers) */
-        linear-gradient(45deg, #171717 25%, transparent 25%, transparent 50%, #171717 50%, #171717 75%, transparent 75%, transparent),
-        linear-gradient(45deg, #101010 25%, transparent 25%, transparent 50%, #101010 50%, #101010 75%, transparent 75%, transparent);
+        /*  Thicker carbon fiber weave */
+        linear-gradient(45deg,
+            #1a1a1a 35%, transparent 35%, transparent 65%, #1a1a1a 65%, #1a1a1a),
+        linear-gradient(45deg,
+            #0f0f0f 35%, transparent 35%, transparent 65%, #0f0f0f 65%, #0f0f0f);
 
-    /* Sizes for sparkles + carbon fiber grid */
+    /* Sparkle sizes */
     background-size:
-        140px 140px,   /* sparkle layer 1 */
-        140px 140px,   /* sparkle layer 2 */
-        140px 140px,   /* sparkle layer 3 */
-        8px 8px,       /* carbon fiber layer 1 */
-        8px 8px;       /* carbon fiber layer 2 */
+        140px 140px,   /* sparkle 1 */
+        140px 140px,   /* sparkle 2 */
+        140px 140px,   /* sparkle 3 */
 
-    
+        12px 12px,     /* carbon layer 1 — THICKER weave */
+        12px 12px;     /* carbon layer 2 — THICKER weave */
+
+    /* Positioning offsets for depth */
     background-position:
-        0 0,           /* sparkle 1 */
-        70px 70px,     /* sparkle 2 */
-        35px 105px,    /* sparkle 3 */
-        0 0,           /* carbon layer 1 */
-        4px 4px;       /* carbon layer 2 */
+        0 0,              /* sparkle 1 */
+        70px 70px,        /* sparkle 2 */
+        35px 105px,       /* sparkle 3 */
+        0 0,              /* carbon 1 */
+        6px 6px;          /* carbon 2 offset for weave */
 }
+
 
 
   .game-container {
