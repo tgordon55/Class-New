@@ -3,9 +3,9 @@
 <head>
   <style>
     body {
-background-color: #C0C0C0;
+background-color: #ffffff;
 font-family: san-serif;
-color: white;
+color: black;
 Text-align: center;
 }
   .game-container {
@@ -43,10 +43,15 @@ Text-align: center;
     cursor: pointer;
 }
 header {
-background-color: linear-gradient(180deg, #F7F7F7, #C0C0C0, #8C8C8C);
-color: white;
+background: linear-gradient(
+to bottom,
+#F7F7F7 0%,
+#C0C0C0 50%,
+#8C8C8C 100%
+);
+color: black;
 text-align: center;
-padding: 20px;
+padding: 40px 20px;
 }
     h1 {color: navy;
        font-size: 36px;}
@@ -68,14 +73,51 @@ padding: 20px;
   padding: 10px;
   text-align: center;
 }
+
+.table-style1 th {
+background-color: lightblue;
+}
+
+.table-style2 {width:60%;
+margin: 20px auto;
+border-collapse: collapse; 
+border: 2px solid darkgreen;} 
+
+.table-style2 th, .table-style2 td {
+border: 1px solid darkgreen;
+padding: 10px;
+text-align: center;}
+
+.table-style2 th {
+background-color: lightgreen;}
+
+.about {
+Width: 60%;
+Margin: 20px auto;
+Text-align: left;}
+
+div.mycontainer {
+width: 66%;
+overflow: auto;}
+
+div.mycontainer div {
+width: 50%;
+Float:left;}
+
+.video {
+width: 35%;
+margin: 10px auto;
+text-align: center;
+border: 3px solid green;
+}
       
 </style>
-  <title>Welcome to Nation Business United</title>
+  <title>NBU</title>
 </head>
 <body>
 <header>
-  <h1> My first Heading</h1>
- <h1>Welcome to the Adventure Game</h1>
+  <h1> Welcome to: Nation Business United</h1>
+ <h1>Lets Play a Quick Game</h1>
   
     <div id="game-container">
         <div id="game-text"></div>
@@ -92,16 +134,16 @@ Age: 33
 Location: Missouri
 </pre>
 </header>
-<section>
-<p>Check out my YouTube Channel:
+<section class="about"><p>Check out my YouTube Channel:
 <a href="https://www.youtube.com/@biggslord" target=" _blank">Enjoy some beats here</a></p>
 <a href="mailto:biggslord@gmail.com" target=" _blank">Email us here</a>
 <a href="https://www.linkedin.com/in/tivon-gordon-835196385/"_blank"> 
 <img src="https://github.com/tgordon55/Class-New/blob/main/Nation%20Business%20New%20Logo.PNG?raw=true" alt="Logo"></a>
 </section>
+
 <hr>
 <h2>My Hobbies</h2>
-<table>
+<table class="table-style1">
 <tr>
 <th>Hobby</th>
 <th>Hours/Week</th>
@@ -117,7 +159,7 @@ Location: Missouri
 </table>
 
 <h2>My Favorite Movies</h2>
-<table>
+<table class="table-style2">
 <tr>
 <th>Movie</th>
 <th>Year</th>
@@ -132,21 +174,27 @@ Location: Missouri
 </tr>
 </table>
 
+<div class = "mycontainer">
+<div>
 <h2> My Favorite Foods</h2>
 <ul>
 <li> Jerk Chicken </li>
 <li> Curry Goat </li>
 <li> Oxtail </li>
 </ul>
+</div>
 
+<div>
 <h2> My Favorite Drinks</h2>
 <ul>
 <li> Lemonade </li>
 <li> Cran Grape </li>
 <li> Water </li>
 </ul>
+</div>
+</div>
 
-<section>
+<section class = "video">
 
 <h2>My Favorite Video</h2>
 
