@@ -3,11 +3,42 @@
 <head>
   <style>
     body {
-background-color: #f2f2f2;
-font-family: san-serif;
-color: #0D0D0D;
-Text-align: center;
+    /* base text + layout */
+    font-family: sans-serif;
+    color: #F5F5F5;            /* light text for black */
+    text-align: center;
+
+    /* base black */
+    background-color: #050505;
+
+    /*  gold sparkle dust (TOP layers) */
+    background-image:
+        radial-gradient(circle, rgba(212, 167, 66, 0.40) 1.8px, transparent 1.8px),
+        radial-gradient(circle, rgba(212, 167, 66, 0.28) 1.4px, transparent 1.4px),
+        radial-gradient(circle, rgba(212, 167, 66, 0.22) 1.1px, transparent 1.1px),
+
+        /*  carbon-fiber texture (BOTTOM layers) */
+        linear-gradient(45deg, #171717 25%, transparent 25%, transparent 50%, #171717 50%, #171717 75%, transparent 75%, transparent),
+        linear-gradient(45deg, #101010 25%, transparent 25%, transparent 50%, #101010 50%, #101010 75%, transparent 75%, transparent);
+
+    /* Sizes for sparkles + carbon fiber grid */
+    background-size:
+        140px 140px,   /* sparkle layer 1 */
+        140px 140px,   /* sparkle layer 2 */
+        140px 140px,   /* sparkle layer 3 */
+        8px 8px,       /* carbon fiber layer 1 */
+        8px 8px;       /* carbon fiber layer 2 */
+
+    
+    background-position:
+        0 0,           /* sparkle 1 */
+        70px 70px,     /* sparkle 2 */
+        35px 105px,    /* sparkle 3 */
+        0 0,           /* carbon layer 1 */
+        4px 4px;       /* carbon layer 2 */
 }
+
+
   .game-container {
     width: 600px;
     height: 500px;
@@ -41,21 +72,21 @@ Text-align: center;
     margin-left: 5px;
     font-size: 14px;
     font-weight: bold;
-    border-radius: 999px; 
+    border-radius: 999px; /* pill style */
     border: 1px solid #bfbfbf;
     color: #222;
 
-   
+    /* Chrome + Gold Gradient */
     background: linear-gradient(
         135deg,
         #ffffff 0%,
-        #bfbfbf 20%,      
-        #d4a742 50%,      
-        #bfbfbf 80%,       
+        #bfbfbf 20%,       /* chrome */
+        #d4a742 50%,       /* gold center */
+        #bfbfbf 80%,       /* chrome */
         #ffffff 100%
     );
 
-   
+    /* Shine + depth */
     box-shadow: 
         inset 0 1px 1px rgba(255, 255, 255, 0.9),
         0 3px 8px rgba(0, 0, 0, 0.35);
@@ -69,13 +100,13 @@ Text-align: center;
 }
 
 
-
+/* Hover state */
 .submit-btn:hover {
     background: linear-gradient(
         135deg,
         #ffffff 0%,
         #e6e6e6 20%,
-        #f1c456 50%,  
+        #f1c456 50%,  /* brighter gold on hover */
         #e6e6e6 80%,
         #ffffff 100%
     );
@@ -86,7 +117,7 @@ Text-align: center;
 	
 }
 
-
+/* Optional: pressed click effect */
 .submit-btn:active {
     transform: translateY(0px);
     box-shadow:
@@ -99,8 +130,8 @@ header {
 Position: relative;
     background: linear-gradient(
         135deg,
-        
-        #ffffff 0%,     
+        /* LEFT CHROME SIDE */
+        #ffffff 0%,     /* bright edge highlight */
         #f2f2f2 10%,
         #bfbfbf 20%,    /* main silver band */
         #5b5b5b 35%,    /* dark chrome streak */
@@ -146,29 +177,31 @@ header::before {
 
 
 
-    h1 {color: navy;
+    h1 {color: #0D0D0D;
+	text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
+	margin: 5px 0;
        font-size: 36px;}
     
     p {font-size: 18px;}
 
-    img {width: 200px;
-        height: 125px;
+    img {width: 300px;
+        height: 225px;
         border-radius: 50%;
         border: 3px solid green;
         margin-top: 10px;}
     
 .table-style1 {width: 80%;
                margin: 20px auto;
-               border: 2px solid navy;
+               border: 2px solid gold;
                   }
-.table-styl1 th, .table-style1 td{
-  border: 1px solid navy;
+.table-style1 th, .table-style1 td{
+  border: 1px #f6e7b3;
   padding: 10px;
   text-align: center;
 }
 
 .table-style1 th {
-background-color: lightblue;
+background-color: #d4a742;
 }
 
 .table-style2 {width:60%;
@@ -185,9 +218,9 @@ text-align: center;}
 background-color: lightgreen;}
 
 .about {
-Width: 60%;
-Margin: 20px auto;
-Text-align: left;}
+width: 60%;
+wargin: 20px auto;
+text-align: left;}
 
 div.mycontainer {
 width: 66%;
@@ -203,7 +236,22 @@ margin: 10px auto;
 text-align: center;
 border: 3px solid green;
 }
-      
+
+.list-style1 {
+list-style-type: square;
+color: darkblue;
+text-align: left;
+margin:20px;
+}      
+
+.list-style2 {
+list-style-type: circle;
+color: darkgreen;
+text-align: left;
+margin:20px;
+}      
+
+
 </style>
   <title>NBU</title>
 </head>
@@ -215,7 +263,7 @@ border: 3px solid green;
     <div id="game-container">
         <div id="game-text"></div>
         <div id="game-input">
-            <input type="text" id="user-input" cols="120" placeholder="CLICK SUBMIT TO START">
+            <input type="text" id="user-input" cols="120" placeholder="SUBMIT TO START">
             <button id="submit-btn">Submit</button>
         </div>
     </div>
@@ -231,7 +279,7 @@ Location: Missouri
 <a href="https://www.youtube.com/@biggslord" target=" _blank">Enjoy some beats here</a></p>
 <a href="mailto:biggslord@gmail.com" target=" _blank">Email us here</a>
 <a href="https://www.linkedin.com/in/tivon-gordon-835196385/"_blank"> 
-<img src="https://github.com/tgordon55/Class-New/blob/main/Nation%20Business%20New%20Logo.PNG?raw=true" alt="Logo"></a>
+<img src="https://github.com/tgordon55/Class-New/blob/main/Nation%20Business%20New%20Logo.PNG?raw=true" alt="Logo" title = "Click Here to View My LinkedIn Profile"></a>
 </section>
 
 <hr>
@@ -270,7 +318,7 @@ Location: Missouri
 <div class = "mycontainer">
 <div>
 <h2> My Favorite Foods</h2>
-<ul>
+<ul class="list-style1">
 <li> Jerk Chicken </li>
 <li> Curry Goat </li>
 <li> Oxtail </li>
@@ -279,7 +327,7 @@ Location: Missouri
 
 <div>
 <h2> My Favorite Drinks</h2>
-<ul>
+<ul class="list-style2">
 <li> Lemonade </li>
 <li> Cran Grape </li>
 <li> Water </li>
