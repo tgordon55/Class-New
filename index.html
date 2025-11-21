@@ -117,7 +117,7 @@
     box-shadow: 
 	0 0 12px rgba(255, 215, 0, 0.6),
 	0 4px 12px rgba(0, 0, 0, 0.45);
-    Transform: translateY(-1px);
+    transform: translateY(-1px);
 	
 }
 
@@ -131,7 +131,7 @@
 
 
 header {
-Position: relative;
+position: relative;
     background: linear-gradient(
         135deg,
         /* LEFT CHROME SIDE */
@@ -256,17 +256,33 @@ margin:20px;
 }      
 
 .button-transition {
-	background-color: navy;
-	color: white;
-	padding: 10px 20px;
-	transition: background-color 0.3s ease;
-	border: none;
-	cursor: pointer;
+background-color: navy;
+color: white;
+padding 10px 20px;
+transition: background-color 0.3s ease;
+border: none;
+cursor: pointer;
 }
 
-.button-transition:hover{
-	background-color: darkorange;
+.button-transition: hover{
+background-color: darkorange;
 }
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+    background-color: #f8f8f8; /* grey */
+    padding: 10px;
+}
+
+.grid-item {
+    background-color: #4CAF50; /* green */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
 </style>
   <title>NBU</title>
 </head>
@@ -278,8 +294,8 @@ margin:20px;
     <div id="game-container">
         <div id="game-text"></div>
         <div id="game-input">
-            <input type="text" id="user-input" placeholder="SUBMIT TO START" style = "width: 150px;">
-            <button id="submit-btn">Submit</button>
+            <input type="text" id="user-input" placeholder=" CLICK SUBMIT TO START" style = "width: 150px;">
+            <button id="submit-btn" class="submit-btn">Submit</button>
         </div>
     </div>
 <script src="Adventure.js"></script>
@@ -290,12 +306,13 @@ Age: 33
 Location: Missouri
 </pre>
 <a href = "test.html" style = "color:black"; target ="_blank";>
-     <button class="button-transition">New Page Link</button></a>
+	<button class="button-transition">New Page Link</button></a>
 </header>
+
 <section class="about"><p>Check out my YouTube Channel:
 <a href="https://www.youtube.com/@biggslord" target=" _blank">Enjoy some beats here</a></p>
 <a href="mailto:biggslord@gmail.com" target=" _blank">Email us here</a>
-<a href="https://www.linkedin.com/in/tivon-gordon-835196385/"_blank"> 
+<a href="https://www.linkedin.com/in/tivon-gordon-835196385/target=" _blank"> 
 <img src="https://github.com/tgordon55/Class-New/blob/main/Nation%20Business%20New%20Logo.PNG?raw=true" alt="Logo" title = "Click Here to View My LinkedIn Profile"></a>
 </section>
 
@@ -376,7 +393,73 @@ Your browser does not support the video tag
   </iframe>
 </section>
 
+<form style="margin-top: 30px;">
+<label for="email">Questions or Concerns? Enter your e-mail:</label>
 
+<input type="e-mail" id="email" name="e-mail" placeholder="you@email.com" required>
+<br><br>
+
+<label for="bio"> Tell me how I can help you:</label><br>
+<textarea id="bio" rows="4" cols="40"></textarea>
+
+<input type="submit" value="Submit">
+</form>
+<br><br>
+
+<form>
+<label for="user">Username:</label>
+
+<input type="text" id="user" name="user" placeholder="Enter your username" required>
+<br><br>
+
+<label for="pass">Password:</label>
+<input type="password" id="pass" name="pass" placeholder="Enter your password" required>
+<br><br>
+
+<input type="submit" value"Login">
+</form>
+
+<div class="grid-container">
+
+    <div class="grid-item">
+        <form style="margin-top: 30px;">
+            <label for="email">Want to get ahold of me? Enter your email:</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="grid-item">
+        <form>
+            <label for="bio">Tell me how I can help you:</label><br>
+            <textarea id="bio" name="bio" rows="4" cols="40"></textarea>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <div class="grid-item">
+        <form>
+            <label for="user">Username:</label>
+            <input type="text" id="user" name="user" placeholder="Enter your username" required><br><br>
+
+            <label for="pass">Password:</label>
+            <input type="password" id="pass" name="pass" placeholder="Enter your password" required><br><br>
+
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <div class="grid-item"></div>
+
+    <div class="grid-item">
+        <a href="index.html" style="color:black;" target="_blank">
+            <button class="button-transition">Home Page</button>
+        </a>
+    </div>
+
+    <div class="grid-item"></div>
+
+</div>
 
 </body>
 </html>
