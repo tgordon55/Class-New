@@ -287,6 +287,55 @@ background-color: darkorange;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
+
+/* NATION BUSINESS UNITED STYLE UPGRADE FOR GRID FORM AREA */
+.grid-item {
+    background: rgba(0,0,0,0.4); /* Transparent black for NBU */
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid rgba(212,175,55,0.4); /* Gold edge */
+}
+
+/* Layout for fields inside each grid item */
+.grid-item form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Form fields */
+.grid-item input[type="text"],
+.grid-item input[type="email"],
+.grid-item input[type="password"],
+.grid-item textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(0,0,0,0.45);
+    color: white;
+    font-size: 0.9rem;
+}
+
+/* Submit Buttons */
+.grid-item input[type="submit"] {
+    background: linear-gradient(135deg, #d4af37, #b98a28);
+    color: black;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+/* Hover shine */
+.grid-item input[type="submit"]:hover {
+    background: linear-gradient(135deg, #fce29b, #d4af37);
+    transform: translateY(-2px);
+}
+	  
 </style>
   <title>NBU</title>
 </head>
